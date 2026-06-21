@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUTOKRAFT | BMW • MINI • PORSCHE Specialists</title>
+  <meta name="description" content="German Performance & Luxury Service Center. Specializing in BMW, MINI, and Porsche maintenance, engine diagnostics, and custom tuning.">
+  <link rel="stylesheet" href="styles.css">
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo" onclick="app.navigate('home')">
+          <span class="logo-brand">AUTOKRAFT</span>
+          <span class="logo-subtitle"><span>BMW</span><span>MINI</span><span>Porsche</span></span>
+        </div>
+        <div class="nav-links">
+          <span class="nav-item active" id="nav-home" onclick="app.navigate('home')">Home</span>
+          <span class="nav-item" id="nav-services" onclick="app.scrollToSection('services')">Services</span>
+          <span class="nav-item" id="nav-branches" onclick="app.scrollToSection('branches')">Branches</span>
+          <span class="nav-item" id="nav-book" onclick="app.navigate('book')">Book Service</span>
+          <span class="nav-item" id="nav-portal" onclick="app.navigate('portal')">Customer Portal</span>
+          <span class="nav-item" id="nav-admin" onclick="app.navigate('admin')">Admin Panel</span>
+        </div>
+        <div class="nav-buttons">
+          <button class="btn btn-outline" id="nav-auth-btn" onclick="app.navigate('auth')">Login / Register</button>
+          <button class="btn btn-primary" onclick="app.navigate('book')">Book Now</button>
+        </div>
+        <div class="menu-toggle" onclick="app.toggleMobileMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      
+      <!-- ==============================================
+           HOME PAGE VIEW
+           ============================================== -->
+      <div id="view-home" class="view-pane active">
+        <!-- Hero Section -->
+        <section class="hero-section">
+          <div class="hero-background-grid"></div>
+          <div class="hero-container">
+            <div class="hero-content">
+              <div class="hero-badge"><span></span>Specialist Service Center</div>
+              <h1 class="hero-title">
+                <span>German Performance</span>
+                <span>& Luxury Service</span>
+                <em>AUTOKRAFT</em>
+              </h1>
+              <p class="hero-desc">
+                High-end maintenance, diagnostics, and performance enhancements tailored exclusively for BMW, MINI Cooper, and Porsche vehicles. Experience dealer-level precision with race-grade passion.
+              </p>
+              <div class="hero-actions">
+                <button class="btn btn-primary btn-lg" onclick="app.navigate('book')">
+                  <i class="fa-solid fa-calendar-check"></i> Book Service
+                </button>
+                <button class="btn btn-whatsapp btn-lg" onclick="app.openWhatsAppSimulator()">
+                  <i class="fa-brands fa-whatsapp"></i> Contact WhatsApp
+                </button>
+                <button class="btn btn-outline btn-lg" onclick="app.navigate('auth')">
+                  <i class="fa-solid fa-right-to-bracket"></i> Customer Login
+                </button>
+              </div>
+            </div>
+            
+            <div class="hero-showcase">
+              <div class="hero-car-card glass-card">
+                <div class="car-image-container">
+                  <!-- Generated Image of BMW M5 -->
+                  <img id="hero-showcase-img" src="assets/hero_bmw_m5.png" alt="AUTOKRAFT BMW M5 Performance">
+                </div>
+                <div class="car-brand-tabs">
+                  <span class="brand-tab active" data-brand="BMW" onclick="app.changeShowcaseBrand('BMW')">BMW</span>
+                  <span class="brand-tab" data-brand="MINI" onclick="app.changeShowcaseBrand('MINI')">MINI COOPER</span>
+                  <span class="brand-tab" data-brand="Porsche" onclick="app.changeShowcaseBrand('Porsche')">PORSCHE</span>
+                </div>
+                <div class="car-info">
+                  <div class="car-model-name" id="hero-car-model">BMW M5 Competition</div>
+                  <div class="car-specialty" id="hero-car-spec">V8 Twin-Turbo Expert Service</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section">
+          <div class="section-header">
+            <span class="section-subtitle">Precision Engineering</span>
+            <h2 class="section-title">Our Specialized Services</h2>
+          </div>
+          <div class="services-grid">
+            <div class="service-card glass-card">
+              <div class="service-icon-box"><i class="fa-solid fa-car-battery"></i></div>
+              <h3 class="service-title">Advanced Diagnostics</h3>
+              <p class="service-desc">Using OEM BMW ISTA, Porsche PIWIS, and MINI tools to scan, calibrate, and program control units.</p>
+            </div>
+            <div class="service-card glass-card">
+              <div class="service-icon-box"><i class="fa-solid fa-wrench"></i></div>
+              <h3 class="service-title">Engine Care & Tuning</h3>
+              <p class="service-desc">Regular servicing to custom Stage 1 & 2 ECU tunes, carbon cleaning, and mechanical rebuilds.</p>
+            </div>
+            <div class="service-card glass-card">
+              <div class="service-icon-box"><i class="fa-solid fa-circle-notch"></i></div>
+              <h3 class="service-title">Brake Systems</h3>
+              <p class="service-desc">Performance brake upgrades, pad & rotor replacement, brake line bleeding, and caliper refurbishment.</p>
+            </div>
+            <div class="service-card glass-card">
+              <div class="service-icon-box"><i class="fa-solid fa-gears"></i></div>
+              <h3 class="service-title">Transmission Service</h3>
+              <p class="service-desc">Flushing, rebuilding, and coding ZF automatic, dual-clutch PDK, and manual gearboxes.</p>
+            </div>
+            <div class="service-card glass-card">
+              <div class="service-icon-box"><i class="fa-solid fa-compass-drafting"></i></div>
+              <h3 class="service-title">Suspension & Steering</h3>
+              <p class="service-desc">Coilovers, bushes, adaptive damping diagnostics, and precision laser wheel alignment.</p>
+            </div>
+            <div class="service-card glass-card">
+              <div class="service-icon-box"><i class="fa-solid fa-wind"></i></div>
+              <h3 class="service-title">Air Conditioning</h3>
+              <p class="service-desc">Compressor diagnostics, leaks detection, R134a/R1234yf gas recharging, and cabin disinfection.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="section" style="background: rgba(0,0,0,0.2);">
+          <div class="why-us-container">
+            <div class="why-us-content">
+              <div class="section-header" style="text-align: left;">
+                <span class="section-subtitle">Why Choose AUTOKRAFT</span>
+                <h2 class="section-title">The German Automotive Authority</h2>
+              </div>
+              <p style="color: var(--text-secondary);">
+                AUTOKRAFT is not a general repair shop. We are a specialized boutique center engineered specifically for the electrical, structural, and mechanical architectures of premium German vehicles.
+              </p>
+              <div class="feature-list">
+                <div class="feature-item">
+                  <div class="feature-number">01</div>
+                  <div>
+                    <h4 class="feature-title">Certified Technicians</h4>
+                    <p class="feature-desc">Our team comprises technicians certified directly in BMW M and Porsche motorsport servicing standards.</p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-number">02</div>
+                  <div>
+                    <h4 class="feature-title">Unified Branch Database</h4>
+                    <p class="feature-desc">Your vehicle's VIN records are synchronized globally across all our branches. Walk into any center with full history confidence.</p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-number">03</div>
+                  <div>
+                    <h4 class="feature-title">Genuine OEM Parts Only</h4>
+                    <p class="feature-desc">We stock and source only original brand components, direct from Munich and Stuttgart partners.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="why-us-graphics">
+              <div class="unified-db-card glass-card">
+                <span class="db-badge">Live System</span>
+                <h3 class="db-title">Unified VIN History Database</h3>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                  Our enterprise service tracking ensures your diagnostics are shared seamlessly.
+                </p>
+                <div class="db-network">
+                  <div class="db-branch-node">
+                    <span class="node-name">El-Lebini Branch</span>
+                    <span class="node-status">Connected</span>
+                  </div>
+                  <div class="db-branch-node">
+                    <span class="node-name">Sheikh Zayed Branch</span>
+                    <span class="node-status">Connected</span>
+                  </div>
+                  <div class="db-branch-node">
+                    <span class="node-name">Full Up Ring Road Branch</span>
+                    <span class="node-status">Connected</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Customer Reviews Section -->
+        <section class="section">
+          <div class="section-header">
+            <span class="section-subtitle">Verified Owner Feedback</span>
+            <h2 class="section-title">What Our Clients Say</h2>
+          </div>
+          <div class="reviews-slider">
+            <div class="review-card glass-card">
+              <div class="stars-row">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review-text">"The only workshop I trust with my Porsche GT3. They fixed a complex PDK transmission issue that the dealer wanted to replace the entire gearbox for."</p>
+              <div class="reviewer-info">
+                <div>
+                  <span class="reviewer-name">Sherif K.</span>
+                  <div class="review-branch">Sheikh Zayed Branch</div>
+                </div>
+                <span class="reviewer-car">Porsche 911 GT3 (992)</span>
+              </div>
+            </div>
+            
+            <div class="review-card glass-card">
+              <div class="stars-row">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review-text">"Extremely professional service. The live tracking panel allowed me to see exactly when my MINI Cooper went into inspection and under repair. Brilliant concept."</p>
+              <div class="reviewer-info">
+                <div>
+                  <span class="reviewer-name">Yasmine M.</span>
+                  <div class="review-branch">El-Lebini Branch</div>
+                </div>
+                <span class="reviewer-car">MINI Cooper S (F56)</span>
+              </div>
+            </div>
+            
+            <div class="review-card glass-card">
+              <div class="stars-row">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review-text">"Did my BMW M3 engine tuning and carbon intake clean-up here. The unified history system is so helpful, they pulled up work order notes from Zayed branch in Lebini instantly."</p>
+              <div class="reviewer-info">
+                <div>
+                  <span class="reviewer-name">Mostafa A.</span>
+                  <div class="review-branch">Full Up Ring Road Branch</div>
+                </div>
+                <span class="reviewer-car">BMW M3 (G80)</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Branches Section -->
+        <section id="branches" class="section" style="background: rgba(0,0,0,0.15);">
+          <div class="section-header">
+            <span class="section-subtitle">Locations & Availability</span>
+            <h2 class="section-title">Our Premium Branches</h2>
+          </div>
+          <div class="branches-grid">
+            <div class="branch-card glass-card">
+              <h3 class="branch-name">El-Lebini Branch</h3>
+              <div class="branch-details">
+                <div class="branch-details-item">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <span>Lebini Road, Giza, Egypt</span>
+                </div>
+                <div class="branch-details-item">
+                  <i class="fa-solid fa-phone"></i>
+                  <span>+20 100 887 5541</span>
+                </div>
+                <div class="branch-details-item">
+                  <i class="fa-solid fa-clock"></i>
+                  <span>09:00 AM - 10:00 PM</span>
+                </div>
+              </div>
+              <div class="branch-capacity">
+                <div class="capacity-label">
+                  <span>Current Load</span>
+                  <span id="load-lebini">65% Capacity</span>
+                </div>
+                <div class="capacity-bar">
+                  <div class="capacity-fill" style="width: 65%;"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="branch-card glass-card">
+              <h3 class="branch-name">Sheikh Zayed Branch</h3>
+              <div class="branch-details">
+                <div class="branch-details-item">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <span>Industrial Area, Sheikh Zayed City, Giza</span>
+                </div>
+                <div class="branch-details-item">
+                  <i class="fa-solid fa-phone"></i>
+                  <span>+20 100 887 5542</span>
+                </div>
+                <div class="branch-details-item">
+                  <i class="fa-solid fa-clock"></i>
+                  <span>09:00 AM - 10:00 PM</span>
+                </div>
+              </div>
+              <div class="branch-capacity">
+                <div class="capacity-label">
+                  <span>Current Load</span>
+                  <span id="load-zayed">40% Capacity</span>
+                </div>
+                <div class="capacity-bar">
+                  <div class="capacity-fill" style="width: 40%;"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="branch-card glass-card">
+              <h3 class="branch-name">Full Up Ring Road</h3>
+              <div class="branch-details">
+                <div class="branch-details-item">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <span>Ring Road Intersection, Maadi, Cairo</span>
+                </div>
+                <div class="branch-details-item">
+                  <i class="fa-solid fa-phone"></i>
+                  <span>+20 100 887 5543</span>
+                </div>
+                <div class="branch-details-item">
+                  <i class="fa-solid fa-clock"></i>
+                  <span>09:00 AM - 11:00 PM</span>
+                </div>
+              </div>
+              <div class="branch-capacity">
+                <div class="capacity-label">
+                  <span>Current Load</span>
+                  <span id="load-ring">85% Capacity</span>
+                </div>
+                <div class="capacity-bar">
+                  <div class="capacity-fill" style="width: 85%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section">
+          <div class="contact-container">
+            <div class="contact-info">
+              <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                <span class="section-subtitle">Get In Touch</span>
+                <h2 class="section-title">Schedule A Visit</h2>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div>
+                  <div class="contact-label">Email Support</div>
+                  <div class="contact-value">support@autokraft.com</div>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fa-solid fa-headset"></i></div>
+                <div>
+                  <div class="contact-label">Hotline</div>
+                  <div class="contact-value">19875 (24/7 Support)</div>
+                </div>
+              </div>
+            </div>
+            
+            <form class="contact-form glass-card" onsubmit="event.preventDefault(); alert('Message sent successfully. We will get back to you shortly.');">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="c-name">Full Name</label>
+                  <input type="text" id="c-name" class="form-input" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                  <label for="c-phone">Phone Number</label>
+                  <input type="tel" id="c-phone" class="form-input" placeholder="Your Mobile" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="c-email">Email Address</label>
+                <input type="email" id="c-email" class="form-input" placeholder="Your Email">
+              </div>
+              <div class="form-group">
+                <label for="c-msg">Your Inquiry</label>
+                <textarea id="c-msg" class="form-input" placeholder="Describe how we can assist you..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: fit-content; align-self: flex-end;">
+                Send Message <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </section>
+      </div>
+
+      <!-- ==============================================
+           CUSTOMER REGISTRATION & LOGIN VIEW
+           ============================================== -->
+      <div id="view-auth" class="view-pane">
+        <section class="auth-section">
+          <div class="auth-card glass-card">
+            <div class="auth-header">
+              <h2 class="auth-title" id="auth-title-text">CUSTOMER PORTAL</h2>
+              <p class="auth-subtitle" id="auth-subtitle-text">Log in to track status and view vehicle health report</p>
+            </div>
+            
+            <div class="auth-toggle-buttons">
+              <span class="auth-toggle-btn active" id="btn-toggle-login" onclick="app.toggleAuthMode('login')">LOGIN</span>
+              <span class="auth-toggle-btn" id="btn-toggle-register" onclick="app.toggleAuthMode('register')">CREATE ACCOUNT</span>
+            </div>
+
+            <!-- Login Form -->
+            <form id="form-login" class="auth-form" onsubmit="app.handleLogin(event)">
+              <div class="form-group">
+                <label for="login-email">Email Address</label>
+                <input type="email" id="login-email" class="form-input" required placeholder="name@email.com">
+              </div>
+              <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" class="form-input" required placeholder="••••••••">
+              </div>
+              <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">
+                LOG IN <i class="fa-solid fa-right-to-bracket"></i>
+              </button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="form-register" class="auth-form" style="display: none;" onsubmit="app.handleRegister(event)">
+              <div class="form-group">
+                <label for="reg-name">Full Name</label>
+                <input type="text" id="reg-name" class="form-input" required placeholder="E.g. Ahmed Aly">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="reg-mobile">Mobile Number</label>
+                  <input type="tel" id="reg-mobile" class="form-input" required placeholder="E.g. 01008875541">
+                </div>
+                <div class="form-group">
+                  <label for="reg-email">Email Address</label>
+                  <input type="email" id="reg-email" class="form-input" required placeholder="name@email.com">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="reg-password">Password</label>
+                <input type="password" id="reg-password" class="form-input" required placeholder="Create Secure Password">
+              </div>
+
+              <!-- Vehicle Details -->
+              <div class="vehicle-info-grid">
+                <div class="vehicle-grid-title">Vehicle Information</div>
+                
+                <div class="form-group">
+                  <label for="reg-car-brand">Brand</label>
+                  <select id="reg-car-brand" class="form-input" required>
+                    <option value="" disabled selected>Select Brand</option>
+                    <option value="BMW">BMW</option>
+                    <option value="MINI">MINI Cooper</option>
+                    <option value="Porsche">Porsche</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="reg-car-model">Model & Version</label>
+                  <input type="text" id="reg-car-model" class="form-input" required placeholder="E.g. M3 Competition / Cooper S / Macan">
+                </div>
+                <div class="form-group">
+                  <label for="reg-car-year">Production Year</label>
+                  <input type="number" id="reg-car-year" class="form-input" required min="1990" max="2027" placeholder="E.g. 2023">
+                </div>
+                <div class="form-group">
+                  <label for="reg-car-vin">VIN Number</label>
+                  <input type="text" id="reg-car-vin" class="form-input" required placeholder="17-Digit Chassis #" maxlength="17">
+                </div>
+                <div class="form-group">
+                  <label for="reg-car-plate">License Plate</label>
+                  <input type="text" id="reg-car-plate" class="form-input" required placeholder="E.g. ABC 1234">
+                </div>
+                <div class="form-group">
+                  <label for="reg-car-mileage">Current Mileage (km)</label>
+                  <input type="number" id="reg-car-mileage" class="form-input" required min="0" placeholder="E.g. 45000">
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">
+                CREATE ACCOUNT & ADD VEHICLE <i class="fa-solid fa-user-plus"></i>
+              </button>
+            </form>
+          </div>
+        </section>
+      </div>
+
+      <!-- ==============================================
+           BOOK SERVICE WIZARD VIEW
+           ============================================== -->
+      <div id="view-book" class="view-pane">
+        <section class="booking-section">
+          <div class="wizard-container glass-card">
+            
+            <!-- Wizard Step Navigation Header -->
+            <div class="wizard-steps">
+              <div class="wizard-progress-bar" id="wizard-progress-line"></div>
+              
+              <div class="step-indicator active" id="step-ind-1" onclick="app.goToWizardStep(1)">
+                <div class="step-number">01</div>
+                <span class="step-label">Branch</span>
+              </div>
+              <div class="step-indicator" id="step-ind-2" onclick="app.goToWizardStep(2)">
+                <div class="step-number">02</div>
+                <span class="step-label">Vehicle</span>
+              </div>
+              <div class="step-indicator" id="step-ind-3" onclick="app.goToWizardStep(3)">
+                <div class="step-number">03</div>
+                <span class="step-label">Service</span>
+              </div>
+              <div class="step-indicator" id="step-ind-4" onclick="app.goToWizardStep(4)">
+                <div class="step-number">04</div>
+                <span class="step-label">Details</span>
+              </div>
+              <div class="step-indicator" id="step-ind-5" onclick="app.goToWizardStep(5)">
+                <div class="step-number">05</div>
+                <span class="step-label">Schedule</span>
+              </div>
+              <div class="step-indicator" id="step-ind-6" onclick="app.goToWizardStep(6)">
+                <div class="step-number">06</div>
+                <span class="step-label">Confirm</span>
+              </div>
+            </div>
+
+            <!-- STEP 1: Branch Selection -->
+            <div class="wizard-pane active" id="wizard-pane-1">
+              <h3 class="wizard-pane-title">Step 1: Select Service Branch</h3>
+              <div class="branch-select-grid">
+                <div class="branch-select-card glass-card" data-branch="El-Lebini" onclick="app.selectWizardBranch('El-Lebini')">
+                  <i class="fa-solid fa-map-location-dot"></i>
+                  <h4>El-Lebini Branch</h4>
+                  <p style="font-size:0.75rem; color:var(--text-secondary);">Giza Specialists Center</p>
+                </div>
+                <div class="branch-select-card glass-card" data-branch="Sheikh Zayed" onclick="app.selectWizardBranch('Sheikh Zayed')">
+                  <i class="fa-solid fa-building-circle-check"></i>
+                  <h4>Sheikh Zayed Branch</h4>
+                  <p style="font-size:0.75rem; color:var(--text-secondary);">Zayed Premium Workshop</p>
+                </div>
+                <div class="branch-select-card glass-card" data-branch="Full Up Ring Road" onclick="app.selectWizardBranch('Full Up Ring Road')">
+                  <i class="fa-solid fa-road"></i>
+                  <h4>Full Up Ring Road</h4>
+                  <p style="font-size:0.75rem; color:var(--text-secondary);">Maadi Central Hub</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 2: Select Vehicle -->
+            <div class="wizard-pane" id="wizard-pane-2">
+              <h3 class="wizard-pane-title">Step 2: Select Vehicle</h3>
+              
+              <!-- User is logged in: show list of their cars -->
+              <div id="wizard-logged-vehicles" class="vehicle-select-list">
+                <!-- Javascript populated -->
+              </div>
+              
+              <!-- Guest or wants to add another: dynamic form -->
+              <div id="wizard-guest-vehicle-trigger" style="margin-top: 1.5rem;">
+                <button class="btn btn-outline" onclick="app.showWizardCarForm()">
+                  <i class="fa-solid fa-plus"></i> Use New / Unregistered Vehicle
+                </button>
+              </div>
+
+              <div id="wizard-car-form" style="display: none; margin-top: 1.5rem;" class="glass-card auth-form">
+                <div class="vehicle-info-grid" style="border-top:none; padding-top:0;">
+                  <div class="vehicle-grid-title" style="color:var(--m-light-blue);">New Vehicle Info</div>
+                  <div class="form-group">
+                    <label for="wiz-car-brand">Brand</label>
+                    <select id="wiz-car-brand" class="form-input">
+                      <option value="" disabled selected>Select Brand</option>
+                      <option value="BMW">BMW</option>
+                      <option value="MINI">MINI Cooper</option>
+                      <option value="Porsche">Porsche</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="wiz-car-model">Model & Version</label>
+                    <input type="text" id="wiz-car-model" class="form-input" placeholder="E.g. 740li / GT4">
+                  </div>
+                  <div class="form-group">
+                    <label for="wiz-car-year">Production Year</label>
+                    <input type="number" id="wiz-car-year" class="form-input" min="1990" max="2027" placeholder="E.g. 2021">
+                  </div>
+                  <div class="form-group">
+                    <label for="wiz-car-vin">VIN Number</label>
+                    <input type="text" id="wiz-car-vin" class="form-input" placeholder="17-Digit Chassis #" maxlength="17">
+                  </div>
+                  <div class="form-group">
+                    <label for="wiz-car-plate">License Plate</label>
+                    <input type="text" id="wiz-car-plate" class="form-input" placeholder="E.g. ABC 9999">
+                  </div>
+                  <div class="form-group">
+                    <label for="wiz-car-mileage">Current Mileage (km)</label>
+                    <input type="number" id="wiz-car-mileage" class="form-input" placeholder="E.g. 12000">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 3: Select Service Type -->
+            <div class="wizard-pane" id="wizard-pane-3">
+              <h3 class="wizard-pane-title">Step 3: Select Service Type</h3>
+              <div class="service-select-grid">
+                <div class="service-select-item glass-card" data-service="Advanced Diagnostics" onclick="app.selectWizardService('Advanced Diagnostics')">
+                  <span class="service-select-icon"><i class="fa-solid fa-car-battery"></i></span>
+                  <span class="service-select-name">Advanced Diagnostics</span>
+                </div>
+                <div class="service-select-item glass-card" data-service="Routine Maintenance" onclick="app.selectWizardService('Routine Maintenance')">
+                  <span class="service-select-icon"><i class="fa-solid fa-filter"></i></span>
+                  <span class="service-select-name">Routine Maintenance</span>
+                </div>
+                <div class="service-select-item glass-card" data-service="Engine Service & Tuning" onclick="app.selectWizardService('Engine Service & Tuning')">
+                  <span class="service-select-icon"><i class="fa-solid fa-wrench"></i></span>
+                  <span class="service-select-name">Engine Service & Tuning</span>
+                </div>
+                <div class="service-select-item glass-card" data-service="Brake System Overhaul" onclick="app.selectWizardService('Brake System Overhaul')">
+                  <span class="service-select-icon"><i class="fa-solid fa-circle-notch"></i></span>
+                  <span class="service-select-name">Brake System Overhaul</span>
+                </div>
+                <div class="service-select-item glass-card" data-service="Transmission Service" onclick="app.selectWizardService('Transmission Service')">
+                  <span class="service-select-icon"><i class="fa-solid fa-gears"></i></span>
+                  <span class="service-select-name">Transmission Service</span>
+                </div>
+                <div class="service-select-item glass-card" data-service="AC Diagnostics & Recharge" onclick="app.selectWizardService('AC Diagnostics & Recharge')">
+                  <span class="service-select-icon"><i class="fa-solid fa-wind"></i></span>
+                  <span class="service-select-name">AC Diagnostics & Recharge</span>
+                </div>
+                <div class="service-select-item glass-card" data-service="Suspension Calibration" onclick="app.selectWizardService('Suspension Calibration')">
+                  <span class="service-select-icon"><i class="fa-solid fa-compass-drafting"></i></span>
+                  <span class="service-select-name">Suspension Calibration</span>
+                </div>
+                <div class="service-select-item glass-card" data-service="Turbocharger & Supercharger Service" onclick="app.selectWizardService('Turbocharger & Supercharger Service')">
+                  <span class="service-select-icon"><i class="fa-solid fa-gauge-high"></i></span>
+                  <span class="service-select-name">Turbo System Tune-Up</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 4: Describe Issue -->
+            <div class="wizard-pane" id="wizard-pane-4">
+              <h3 class="wizard-pane-title">Step 4: Describe Issue</h3>
+              <div class="form-group">
+                <label for="wiz-issue-desc" style="margin-bottom: 0.5rem; font-weight:700;">Explain what issues you are experiencing with the vehicle:</label>
+                <textarea id="wiz-issue-desc" class="wizard-text-area" placeholder="Describe symptoms, strange sounds, check engine lights, or specific work required..."></textarea>
+              </div>
+            </div>
+
+            <!-- STEP 5: Date and Time -->
+            <div class="wizard-pane" id="wizard-pane-5">
+              <h3 class="wizard-pane-title">Step 5: Select Date & Time</h3>
+              <div class="date-time-container">
+                <div class="date-picker-box">
+                  <label for="wiz-date" style="font-weight: 700;">Service Date</label>
+                  <input type="date" id="wiz-date" class="datepicker-input" onchange="app.generateTimeSlots()">
+                </div>
+                <div>
+                  <label style="font-weight: 700; margin-bottom: 0.8rem; display:block;">Available Time Slots</label>
+                  <div class="time-slots-grid" id="wiz-time-slots">
+                    <!-- Loaded dynamically -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 6: Confirmation -->
+            <div class="wizard-pane" id="wizard-pane-6">
+              <h3 class="wizard-pane-title">Step 6: Confirm Booking</h3>
+              <div class="confirm-booking-box">
+                <div class="confirm-details-list">
+                  <div class="confirm-item">
+                    <span class="confirm-label">Branch</span>
+                    <span class="confirm-val" id="conf-branch">-</span>
+                  </div>
+                  <div class="confirm-item">
+                    <span class="confirm-label">Vehicle</span>
+                    <span class="confirm-val" id="conf-vehicle">-</span>
+                  </div>
+                  <div class="confirm-item">
+                    <span class="confirm-label">Service Type</span>
+                    <span class="confirm-val" id="conf-service">-</span>
+                  </div>
+                  <div class="confirm-item">
+                    <span class="confirm-label">Schedule</span>
+                    <span class="confirm-val" id="conf-schedule">-</span>
+                  </div>
+                  <div class="confirm-item">
+                    <span class="confirm-label">Notes</span>
+                    <span class="confirm-val" id="conf-notes">-</span>
+                  </div>
+                </div>
+                
+                <!-- Point reward loyalty system estimate -->
+                <div class="points-estimation">
+                  <i class="fa-solid fa-award"></i>
+                  <span>Loyalty Estimate: You will earn approximately <strong id="conf-points-est">250</strong> reward points upon completion of this service.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Navigation Footer -->
+            <div class="wizard-footer">
+              <button class="btn btn-outline" id="wiz-prev-btn" onclick="app.wizardPrev()" style="visibility: hidden;">
+                <i class="fa-solid fa-arrow-left"></i> Back
+              </button>
+              <button class="btn btn-primary" id="wiz-next-btn" onclick="app.wizardNext()">
+                Next <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+
+          </div>
+        </section>
+      </div>
+
+      <!-- ==============================================
+           CUSTOMER DASHBOARD VIEW
+           ============================================== -->
+      <div id="view-portal" class="view-pane">
+        <section class="portal-section">
+          <div class="dashboard-layout">
+            
+            <!-- Dashboard Sidebar -->
+            <div class="dashboard-sidebar">
+              <div class="sidebar-profile-card glass-card">
+                <div class="profile-avatar" id="portal-avatar-letter">A</div>
+                <h3 class="profile-name" id="portal-user-name">Ahmed Aly</h3>
+                <span class="profile-role">AUTOKRAFT Member</span>
+              </div>
+              <ul class="sidebar-nav">
+                <li class="sidebar-nav-item active" id="sb-overview" onclick="app.switchPortalPane('overview')">
+                  <i class="fa-solid fa-chart-line"></i> Overview
+                </li>
+                <li class="sidebar-nav-item" id="sb-health" onclick="app.switchPortalPane('health')">
+                  <i class="fa-solid fa-heart-pulse"></i> Vehicle Health
+                </li>
+                <li class="sidebar-nav-item" id="sb-history" onclick="app.switchPortalPane('history')">
+                  <i class="fa-solid fa-clock-rotate-left"></i> Digital History
+                </li>
+                <li class="sidebar-nav-item" id="sb-loyalty" onclick="app.switchPortalPane('loyalty')">
+                  <i class="fa-solid fa-gift"></i> Loyalty Rewards
+                </li>
+                <li class="sidebar-nav-item" id="sb-documents" onclick="app.switchPortalPane('documents')">
+                  <i class="fa-solid fa-file-invoice-dollar"></i> Documents
+                </li>
+                <li class="sidebar-nav-item" onclick="app.logoutUser()" style="color:var(--status-critical); margin-top:2rem;">
+                  <i class="fa-solid fa-right-from-bracket"></i> Log Out
+                </li>
+              </ul>
+            </div>
+
+            <!-- Content Pane -->
+            <div class="dashboard-content-area">
+              
+              <!-- PORTAL PANEL: OVERVIEW -->
+              <div class="dashboard-pane active" id="portal-pane-overview">
+                <!-- Overview Stats Grid -->
+                <div class="overview-stats-row">
+                  <div class="stat-card glass-card">
+                    <div class="stat-card-left">
+                      <span class="stat-card-label">Loyalty Balance</span>
+                      <div class="stat-card-val" style="color:var(--m-light-blue);" id="stat-loyalty-pts">450<span>pts</span></div>
+                    </div>
+                    <div class="stat-card-icon"><i class="fa-solid fa-award"></i></div>
+                  </div>
+                  
+                  <div class="stat-card glass-card">
+                    <div class="stat-card-left">
+                      <span class="stat-card-label">Vehicle Mileage</span>
+                      <div class="stat-card-val" id="stat-mileage">48,900<span>km</span></div>
+                    </div>
+                    <div class="stat-card-icon"><i class="fa-solid fa-gauge"></i></div>
+                  </div>
+                  
+                  <div class="stat-card glass-card">
+                    <div class="stat-card-left">
+                      <span class="stat-card-label">Next Service</span>
+                      <div class="stat-card-val" style="color:var(--status-attention);" id="stat-next-service">54,000<span>km</span></div>
+                    </div>
+                    <div class="stat-card-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                  </div>
+
+                  <div class="stat-card glass-card">
+                    <div class="stat-card-left">
+                      <span class="stat-card-label">Visits Registered</span>
+                      <div class="stat-card-val" id="stat-visits">3<span>visits</span></div>
+                    </div>
+                    <div class="stat-card-icon"><i class="fa-solid fa-car-tunnel"></i></div>
+                  </div>
+                </div>
+
+                <!-- Active Vehicle Detail Card -->
+                <div class="dashboard-vehicle-card glass-card" style="margin-top: 1.5rem;">
+                  <div class="vehicle-card-left">
+                    <div class="vehicle-badge-wrapper">
+                      <span class="vehicle-card-brand-badge" id="portal-car-brand">BMW</span>
+                      <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">PRIMARY VEHICLE</span>
+                    </div>
+                    <h2 class="vehicle-card-title" id="portal-car-model">BMW M3 Competition</h2>
+                    <div class="vehicle-card-specs">
+                      <div class="spec-item">
+                        <span class="spec-item-label">VIN Number</span>
+                        <span class="spec-item-val mono" id="portal-car-vin">WBA53AG05F7820815</span>
+                      </div>
+                      <div class="spec-item">
+                        <span class="spec-item-label">License Plate</span>
+                        <span class="spec-item-val mono" id="portal-car-plate">ABC 1234</span>
+                      </div>
+                      <div class="spec-item">
+                        <span class="spec-item-label">Production Year</span>
+                        <span class="spec-item-val" id="portal-car-year">2022</span>
+                      </div>
+                      <div class="spec-item">
+                        <span class="spec-item-label">Specialist Tech</span>
+                        <span class="spec-item-val" style="color:var(--m-red);">BMW M Certified</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="car-image-container" style="height:100%; min-height:180px;">
+                    <img id="portal-car-image" src="assets/hero_bmw_m5.png" alt="Registered Car">
+                  </div>
+                </div>
+
+                <!-- Live Vehicle Status Tracker (Active Work Order check) -->
+                <div class="live-tracker-card glass-card" style="margin-top: 1.5rem;" id="portal-live-tracker-wrapper">
+                  <h4 class="live-tracker-title">Live Service status (Order: #<span id="portal-active-wo-num">WO-9844</span>)</h4>
+                  <div class="tracker-timeline">
+                    <div class="tracker-progress-line" id="live-progress-line"></div>
+                    
+                    <div class="tracker-step completed" id="ts-received">
+                      <div class="tracker-dot"></div>
+                      <span class="tracker-step-label">Received</span>
+                    </div>
+                    <div class="tracker-step completed" id="ts-inspect">
+                      <div class="tracker-dot"></div>
+                      <span class="tracker-step-label">Inspection</span>
+                    </div>
+                    <div class="tracker-step active" id="ts-repair">
+                      <div class="tracker-dot"></div>
+                      <span class="tracker-step-label">Repair</span>
+                    </div>
+                    <div class="tracker-step" id="ts-parts">
+                      <div class="tracker-dot"></div>
+                      <span class="tracker-step-label">Waiting Parts</span>
+                    </div>
+                    <div class="tracker-step" id="ts-qc">
+                      <div class="tracker-dot"></div>
+                      <span class="tracker-step-label">Quality Control</span>
+                    </div>
+                    <div class="tracker-step" id="ts-ready">
+                      <div class="tracker-dot"></div>
+                      <span class="tracker-step-label">Ready</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PORTAL PANEL: VEHICLE HEALTH REPORT -->
+              <div class="dashboard-pane" id="portal-pane-health">
+                <div class="health-dashboard">
+                  <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                    <span class="section-subtitle">Real-time Telemetry & Inspections</span>
+                    <h2 class="section-title">Digital Health Report</h2>
+                  </div>
+                  
+                  <div class="health-grid" id="portal-health-grid">
+                    <!-- Populated dynamically via JS -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- PORTAL PANEL: DIGITAL VEHICLE HISTORY -->
+              <div class="dashboard-pane" id="portal-pane-history">
+                <div class="timeline-card glass-card">
+                  <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+                    <span class="section-subtitle">Unified Records Across All Branches</span>
+                    <h2 class="section-title">Service Timeline</h2>
+                  </div>
+                  
+                  <div class="history-timeline" id="portal-history-timeline">
+                    <!-- Populated dynamically via JS -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- PORTAL PANEL: LOYALTY SYSTEM -->
+              <div class="dashboard-pane" id="portal-pane-loyalty">
+                <div class="loyalty-banner">
+                  <div class="loyalty-text-box">
+                    <h3>AUTOKRAFT Rewards Program</h3>
+                    <p style="font-size:0.9rem; color:var(--text-secondary);">
+                      Every service or replacement part purchased at any branch earns points. Redeem them for discounts or premium rewards.
+                    </p>
+                  </div>
+                  <div class="loyalty-points-display">
+                    <div class="points-number" id="loyalty-balance-box">450</div>
+                    <span class="points-label">Active Points</span>
+                  </div>
+                </div>
+                
+                <h3 style="font-family:var(--font-mono); margin-bottom: 1.5rem; border-left:3px solid var(--m-light-blue); padding-left:10px;">Available Rewards</h3>
+                <div class="rewards-grid" id="rewards-list-container">
+                  <!-- Populated via JS -->
+                </div>
+              </div>
+
+              <!-- PORTAL PANEL: DOCUMENTS -->
+              <div class="dashboard-pane" id="portal-pane-documents">
+                <div class="timeline-card glass-card">
+                  <div class="section-header" style="text-align: left; margin-bottom: 2.5rem;">
+                    <span class="section-subtitle">Invoices, Diagnostic Sheets & Reports</span>
+                    <h2 class="section-title">Digital Vault</h2>
+                  </div>
+                  
+                  <div class="admin-table-container">
+                    <table class="admin-table">
+                      <thead>
+                        <tr>
+                          <th>Document Title</th>
+                          <th>Date</th>
+                          <th>Type</th>
+                          <th>Linked Work Order</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="portal-documents-table">
+                        <!-- Populated via JS -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ==============================================
+           ADMIN PANEL VIEW
+           ============================================== -->
+      <div id="view-admin" class="view-pane">
+        <section class="admin-layout">
+          
+          <!-- Admin Sidebar -->
+          <div class="admin-sidebar">
+            <div class="glass-card" style="padding: 1.5rem; text-align: center; margin-bottom: 1rem;">
+              <h4 style="font-family: var(--font-mono); color: var(--m-red); letter-spacing:1px; margin-bottom: 0.2rem;">ADMIN CONSOLE</h4>
+              <span style="font-size: 0.7rem; color: var(--text-muted); font-weight: 700;">AUTOKRAFT GLOBAL NETWORK</span>
+            </div>
+            
+            <ul class="admin-menu">
+              <li class="admin-menu-item active" id="am-dashboard" onclick="app.switchAdminPane('dashboard')">
+                <i class="fa-solid fa-gauge-high"></i> Dashboard
+              </li>
+              <li class="admin-menu-item" id="am-customers" onclick="app.switchAdminPane('customers')">
+                <i class="fa-solid fa-users"></i> Customers
+              </li>
+              <li class="admin-menu-item" id="am-vehicles" onclick="app.switchAdminPane('vehicles')">
+                <i class="fa-solid fa-car"></i> Vehicles
+              </li>
+              <li class="admin-menu-item" id="am-bookings" onclick="app.switchAdminPane('bookings')">
+                <i class="fa-solid fa-calendar-check"></i> Bookings
+              </li>
+              <li class="admin-menu-item" id="am-workorders" onclick="app.switchAdminPane('workorders')">
+                <i class="fa-solid fa-receipt"></i> Work Orders
+              </li>
+              <li class="admin-menu-item" id="am-inventory" onclick="app.switchAdminPane('inventory')">
+                <i class="fa-solid fa-box-open"></i> Inventory
+              </li>
+              <li class="admin-menu-item" id="am-technicians" onclick="app.switchAdminPane('technicians')">
+                <i class="fa-solid fa-user-gear"></i> Technicians
+              </li>
+              <li class="admin-menu-item" id="am-vinlookup" onclick="app.switchAdminPane('vinlookup')">
+                <i class="fa-solid fa-magnifying-glass-chart"></i> VIN Lookup
+              </li>
+            </ul>
+          </div>
+
+          <!-- Admin Panels -->
+          <div class="admin-content-area">
+            
+            <!-- ADMIN PANE: DASHBOARD -->
+            <div class="admin-pane active" id="admin-pane-dashboard">
+              <div class="admin-pane-header">
+                <h3 class="admin-pane-title">Overview Diagnostics</h3>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted);" id="admin-live-time">Mon, 1:40 AM</span>
+              </div>
+              
+              <!-- Stats Row -->
+              <div class="overview-stats-row" style="margin-bottom: 2rem;">
+                <div class="stat-card glass-card">
+                  <div class="stat-card-left">
+                    <span class="stat-card-label">Unified Revenue</span>
+                    <div class="stat-card-val" style="color:var(--status-excellent);" id="adm-stat-revenue">$184,500</div>
+                  </div>
+                  <div class="stat-card-icon"><i class="fa-solid fa-dollar-sign"></i></div>
+                </div>
+                <div class="stat-card glass-card">
+                  <div class="stat-card-left">
+                    <span class="stat-card-label">Active Bookings</span>
+                    <div class="stat-card-val" id="adm-stat-bookings">5</div>
+                  </div>
+                  <div class="stat-card-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                </div>
+                <div class="stat-card glass-card">
+                  <div class="stat-card-left">
+                    <span class="stat-card-label">Work in Progress</span>
+                    <div class="stat-card-val" style="color:var(--m-light-blue);" id="adm-stat-wip">3</div>
+                  </div>
+                  <div class="stat-card-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                </div>
+                <div class="stat-card glass-card">
+                  <div class="stat-card-left">
+                    <span class="stat-card-label">Total Fleet</span>
+                    <div class="stat-card-val" id="adm-stat-fleet">24</div>
+                  </div>
+                  <div class="stat-card-icon"><i class="fa-solid fa-car"></i></div>
+                </div>
+              </div>
+
+              <!-- Revenue Line Chart -->
+              <div class="chart-card glass-card">
+                <div class="chart-header">
+                  <span class="chart-title">Revenue Flow (Last 6 Months)</span>
+                  <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">ALL BRANCHES</div>
+                </div>
+                <div class="chart-svg-container">
+                  <svg viewBox="0 0 600 220" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="chart-gradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="var(--m-red)" stop-opacity="0.3"/>
+                        <stop offset="100%" stop-color="var(--m-red)" stop-opacity="0"/>
+                      </linearGradient>
+                    </defs>
+                    <!-- Grid Lines -->
+                    <line x1="50" y1="30" x2="570" y2="30" class="chart-grid-line"/>
+                    <line x1="50" y1="80" x2="570" y2="80" class="chart-grid-line"/>
+                    <line x1="50" y1="130" x2="570" y2="130" class="chart-grid-line"/>
+                    <line x1="50" y1="180" x2="570" y2="180" class="chart-grid-line"/>
+                    
+                    <!-- Axis Labels -->
+                    <text x="15" y="35" class="chart-axis-text">$50K</text>
+                    <text x="15" y="85" class="chart-axis-text">$30K</text>
+                    <text x="15" y="135" class="chart-axis-text">$15K</text>
+                    <text x="15" y="185" class="chart-axis-text">$0</text>
+                    
+                    <text x="75" y="210" class="chart-axis-text">JAN</text>
+                    <text x="175" y="210" class="chart-axis-text">FEB</text>
+                    <text x="275" y="210" class="chart-axis-text">MAR</text>
+                    <text x="375" y="210" class="chart-axis-text">APR</text>
+                    <text x="475" y="210" class="chart-axis-text">MAY</text>
+                    <text x="555" y="210" class="chart-axis-text">JUN</text>
+                    
+                    <!-- Area Path -->
+                    <path d="M 75 180 Q 175 140 275 120 T 375 70 T 475 50 T 555 35 L 555 180 Z" class="chart-area"/>
+                    <!-- Chart Line -->
+                    <path d="M 75 180 Q 175 140 275 120 T 375 70 T 475 50 T 555 35" class="chart-line"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- ADMIN PANE: CUSTOMERS -->
+            <div class="admin-pane" id="admin-pane-customers">
+              <div class="admin-pane-header">
+                <h3 class="admin-pane-title">Customer Directory</h3>
+              </div>
+              <div class="admin-table-container">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Mobile</th>
+                      <th>Email</th>
+                      <th>Primary Vehicle</th>
+                      <th>Points</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-customers-table">
+                    <!-- Populated via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ADMIN PANE: VEHICLES -->
+            <div class="admin-pane" id="admin-pane-vehicles">
+              <div class="admin-pane-header">
+                <h3 class="admin-pane-title">Fleet Directory</h3>
+              </div>
+              <div class="admin-table-container">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Brand</th>
+                      <th>Model</th>
+                      <th>Year</th>
+                      <th>License Plate</th>
+                      <th>VIN</th>
+                      <th>Mileage</th>
+                      <th>History Details</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-vehicles-table">
+                    <!-- Populated via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ADMIN PANE: BOOKINGS -->
+            <div class="admin-pane" id="admin-pane-bookings">
+              <div class="admin-pane-header">
+                <h3 class="admin-pane-title">Pending Bookings</h3>
+              </div>
+              <div class="admin-table-container">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Date / Time</th>
+                      <th>Branch</th>
+                      <th>Customer</th>
+                      <th>Vehicle</th>
+                      <th>Service</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-bookings-table">
+                    <!-- Populated via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ADMIN PANE: WORK ORDERS -->
+            <div class="admin-pane" id="admin-pane-workorders">
+              <div class="admin-pane-header">
+                <h3 class="admin-pane-title">Work Order Control</h3>
+                <button class="btn btn-primary" onclick="app.showCreateWorkOrderForm()">
+                  <i class="fa-solid fa-plus"></i> Create Work Order
+                </button>
+              </div>
+
+              <!-- Create Work Order Form -->
+              <div id="wo-creation-box" class="glass-card" style="display:none; margin-bottom: 2rem;">
+                <h4 style="font-family:var(--font-mono); padding:1.5rem 1.5rem 0 1.5rem; color:var(--m-red);">NEW WORK ORDER</h4>
+                <form class="admin-form-box" onsubmit="app.handleCreateWorkOrder(event)">
+                  <div class="form-group">
+                    <label for="wo-vin">Select Vehicle (VIN)</label>
+                    <select id="wo-vin" class="form-input" required onchange="app.populateWOCarData(this.value)">
+                      <!-- Populated via JS -->
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="wo-customer">Customer Name</label>
+                    <input type="text" id="wo-customer" class="form-input" readonly required>
+                  </div>
+                  <div class="form-group">
+                    <label for="wo-mileage">Current Mileage (km)</label>
+                    <input type="number" id="wo-mileage" class="form-input" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="wo-tech">Technician</label>
+                    <select id="wo-tech" class="form-input" required>
+                      <!-- Loaded via JS -->
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="wo-parts">Replaced Parts (comma separated)</label>
+                    <input type="text" id="wo-parts" class="form-input" placeholder="E.g. Spark Plugs, Brake Pads, Engine Oil">
+                  </div>
+                  <div class="form-group">
+                    <label for="wo-cost">Total Costs ($)</label>
+                    <input type="number" id="wo-cost" class="form-input" required placeholder="E.g. 850">
+                  </div>
+                  <div class="form-group form-group-full">
+                    <label for="wo-notes">Service Details & Notes</label>
+                    <textarea id="wo-notes" class="form-input" style="min-height:80px;" required placeholder="Engine spark plugs replaced, ZF transmission fluids flushed..."></textarea>
+                  </div>
+                  <div class="action-row form-group-full" style="justify-content:flex-end; margin-top: 1rem;">
+                    <button type="button" class="btn btn-outline" onclick="app.hideCreateWorkOrderForm()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Work Order <i class="fa-solid fa-save"></i></button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Active Work Orders Table -->
+              <div class="admin-table-container">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>WO #</th>
+                      <th>VIN</th>
+                      <th>Customer</th>
+                      <th>Technician</th>
+                      <th>Mileage</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-workorders-table">
+                    <!-- Populated via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ADMIN PANE: INVENTORY -->
+            <div class="admin-pane" id="admin-pane-inventory">
+              <div class="admin-pane-header">
+                <h3 class="admin-pane-title">Parts Stock Control</h3>
+              </div>
+              <div class="admin-table-container">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Part Code</th>
+                      <th>Name</th>
+                      <th>Category</th>
+                      <th>Compatible Brands</th>
+                      <th>Current Stock</th>
+                      <th>Threshold Alert</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-inventory-table">
+                    <!-- Populated via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ADMIN PANE: TECHNICIANS -->
+            <div class="admin-pane" id="admin-pane-technicians">
+              <div class="admin-pane-header">
+                <h3 class="admin-pane-title">Technicians Roster</h3>
+              </div>
+              <div class="admin-table-container">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Technician Name</th>
+                      <th>Certification Specialty</th>
+                      <th>Branch Allocation</th>
+                      <th>Current Load</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-technicians-table">
+                    <!-- Populated via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ADMIN PANE: VIN LOOKUP -->
+            <div class="admin-pane" id="admin-pane-vinlookup">
+              <div class="admin-pane-header">
+                <h3 class="admin-pane-title">Unified Cross-Branch Search</h3>
+              </div>
+              
+              <div class="glass-card" style="padding:2.5rem; display:flex; flex-direction:column; gap:1.5rem; margin-bottom:2rem;">
+                <div style="font-weight:700; color:var(--m-light-blue); font-size:0.85rem; letter-spacing:1px; text-transform:uppercase;">
+                  Search Unified AUTOKRAFT Records
+                </div>
+                <div style="display:flex; gap:1rem;">
+                  <input type="text" id="vin-search-input" class="form-input" style="font-family:var(--font-mono); font-size:1.2rem; padding: 1rem; max-width: 500px;" placeholder="ENTER 17-DIGIT VEHICLE VIN" maxlength="17">
+                  <button class="btn btn-primary" onclick="app.executeVINSearch()" style="padding: 1rem 2rem;">
+                    SEARCH DATA <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- VIN Search Results Box -->
+              <div id="vin-search-results-box" class="glass-card" style="display:none; padding:2rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:1rem; margin-bottom:1.5rem;">
+                  <h4 style="font-family:var(--font-mono); font-size:1.3rem;" id="vin-search-model-title">Porsche 911 Carrera</h4>
+                  <span class="table-vin-badge" id="vin-search-vin-badge">WPOZZZ99Z12345678</span>
+                </div>
+                
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:2rem;">
+                  <div class="vehicle-card-specs" style="grid-template-columns:1fr 1fr;">
+                    <div class="spec-item">
+                      <span class="spec-item-label">Owner Name</span>
+                      <span class="spec-item-val" id="vin-search-owner">-</span>
+                    </div>
+                    <div class="spec-item">
+                      <span class="spec-item-label">Mobile Number</span>
+                      <span class="spec-item-val" id="vin-search-phone">-</span>
+                    </div>
+                    <div class="spec-item">
+                      <span class="spec-item-label">Plate License</span>
+                      <span class="spec-item-val mono" id="vin-search-plate">-</span>
+                    </div>
+                    <div class="spec-item">
+                      <span class="spec-item-label">Last Known Mileage</span>
+                      <span class="spec-item-val mono" id="vin-search-mileage">-</span>
+                    </div>
+                  </div>
+                </div>
+
+                <h4 style="font-family:var(--font-mono); font-size:1rem; border-left:3px solid var(--m-red); padding-left:8px; margin-bottom:1.2rem; color:var(--m-red);">
+                  UNIFIED VISIT HISTORY
+                </h4>
+                
+                <div class="history-timeline" id="vin-search-history-timeline">
+                  <!-- History Loaded Dynamic -->
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </div>
+
+    </main>
+
+    <!-- ==============================================
+         WHATSAPP INTEGRATION SIMULATOR
+         ============================================== -->
+    <!-- Floating Trigger Badge -->
+    <div class="whatsapp-trigger-btn" id="wa-trigger-btn" onclick="app.toggleWhatsAppTray()">
+      <i class="fa-brands fa-whatsapp"></i>
+    </div>
+
+    <!-- Live WhatsApp Chat Window -->
+    <div class="whatsapp-chat-tray glass-card" id="wa-chat-tray">
+      <div class="whatsapp-header">
+        <div class="whatsapp-header-left">
+          <div class="whatsapp-avatar"><i class="fa-solid fa-car-wrench"></i></div>
+          <div class="whatsapp-status-info">
+            <span class="whatsapp-name">AUTOKRAFT Updates</span>
+            <span class="whatsapp-status">Automated Notification System</span>
+          </div>
+        </div>
+        <div class="whatsapp-close" onclick="app.toggleWhatsAppTray()">
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+      </div>
+      <div class="whatsapp-chat-body" id="wa-chat-body">
+        <div class="whatsapp-msg received">
+          Hello! Welcome to the AUTOKRAFT notifications channel. Real-time updates about your vehicle's bookings and repair stages will be logged here.
+          <div class="whatsapp-msg-time">01:40 AM</div>
+        </div>
+      </div>
+      <div class="whatsapp-footer">
+        <input type="text" class="whatsapp-input" id="wa-chat-input" placeholder="Type a message..." onkeydown="if(event.key === 'Enter') app.sendWhatsAppUserMsg()">
+        <div class="whatsapp-send-btn" onclick="app.sendWhatsAppUserMsg()">
+          <i class="fa-solid fa-paper-plane"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <div class="logo-brand">AUTOKRAFT</div>
+          <p class="footer-desc">
+            BMW, MINI, and Porsche specialist workshop network. State-of-the-art diagnostics and professional motorsport-grade mechanics.
+          </p>
+          <div class="footer-socials">
+            <span class="social-icon"><i class="fa-brands fa-facebook-f"></i></span>
+            <span class="social-icon"><i class="fa-brands fa-instagram"></i></span>
+            <span class="social-icon"><i class="fa-brands fa-youtube"></i></span>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h4 class="footer-column-title">Branches</h4>
+          <ul class="footer-links">
+            <li><a href="#" onclick="app.scrollToSection('branches')">El-Lebini Branch</a></li>
+            <li><a href="#" onclick="app.scrollToSection('branches')">Sheikh Zayed Branch</a></li>
+            <li><a href="#" onclick="app.scrollToSection('branches')">Full Up Ring Road</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4 class="footer-column-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#" onclick="app.navigate('book')">Book Service</a></li>
+            <li><a href="#" onclick="app.navigate('auth')">Customer Portal</a></li>
+            <li><a href="#" onclick="app.navigate('admin')">Admin Panel</a></li>
+            <li><a href="#" onclick="app.scrollToSection('services')">Services List</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4 class="footer-column-title">Unified Database</h4>
+          <p style="font-size:0.85rem; color:var(--text-secondary);">
+            Our network synchronizes diagnostic data across Cairo and Giza. Your service records are instantly retrievable by any technician, anywhere.
+          </p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <span>© 2026 AUTOKRAFT Inc. All Rights Reserved. BMW, MINI and Porsche logos are trademarks of their respective owners.</span>
+        <span>Premium German Tuning Authority</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- APPLICATION LOGIC -->
+  <script src="app.js"></script>
+</body>
+</html>
