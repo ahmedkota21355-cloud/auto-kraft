@@ -2589,6 +2589,15 @@ textarea.form-input {
   100% { box-shadow: 0 0 0 0 rgba(255, 14, 60, 0); }
 }
 
+/* --- MAIN PAGES VIEWS --- */
+.view-pane {
+  display: none;
+  animation: fadeIn 0.4s ease-in-out;
+}
+.view-pane.active {
+  display: block;
+}
+
 /* --- RESPONSIVE MEDIA QUERIES --- */
 @media (max-width: 1200px) {
   .hero-container {

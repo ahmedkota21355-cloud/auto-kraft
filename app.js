@@ -179,15 +179,26 @@ class AutoKraftPlatform {
       { name: "Kareem Badawi", specialty: "MINI Cooper Specialist", branch: "Full Up Ring Road", load: "WIP (0)", status: "Active" }
     ];
 
-    // Load from local storage or set defaults
-    this.customers = JSON.parse(localStorage.getItem("autokraft_customers")) || defaultCustomers;
-    this.history = JSON.parse(localStorage.getItem("autokraft_history")) || defaultHistory;
-    this.health = JSON.parse(localStorage.getItem("autokraft_health")) || defaultHealth;
-    this.workOrders = JSON.parse(localStorage.getItem("autokraft_work_orders")) || defaultWorkOrders;
-    this.bookings = JSON.parse(localStorage.getItem("autokraft_bookings")) || defaultBookings;
-    this.inventory = JSON.parse(localStorage.getItem("autokraft_inventory")) || defaultInventory;
-    this.technicians = JSON.parse(localStorage.getItem("autokraft_technicians")) || defaultTechnicians;
-    this.activeUser = JSON.parse(localStorage.getItem("autokraft_active_user")) || null;
+    // Load from local storage or set defaults with safe JSON parsing
+    const safeLoad = (key, fallback) => {
+      try {
+        const val = localStorage.getItem(key);
+        if (!val || val === "undefined") return fallback;
+        return JSON.parse(val);
+      } catch (err) {
+        console.error(`Error parsing localStorage key "${key}":`, err);
+        return fallback;
+      }
+    };
+
+    this.customers = safeLoad("autokraft_customers", defaultCustomers);
+    this.history = safeLoad("autokraft_history", defaultHistory);
+    this.health = safeLoad("autokraft_health", defaultHealth);
+    this.workOrders = safeLoad("autokraft_work_orders", defaultWorkOrders);
+    this.bookings = safeLoad("autokraft_bookings", defaultBookings);
+    this.inventory = safeLoad("autokraft_inventory", defaultInventory);
+    this.technicians = safeLoad("autokraft_technicians", defaultTechnicians);
+    this.activeUser = safeLoad("autokraft_active_user", null);
     
     // Booking wizard state
     this.bookingState = {
@@ -284,6 +295,18 @@ class AutoKraftPlatform {
       return;
     }
 
+    if (viewName === "admin") {
+      const isAdmin = this.checkAdminSession();
+      if (!isAdmin) {
+        document.getElementById("admin-login-box").style.display = "flex";
+        document.getElementById("admin-main-layout").style.display = "none";
+      } else {
+        document.getElementById("admin-login-box").style.display = "none";
+        document.getElementById("admin-main-layout").style.display = "grid";
+        this.renderAdmin();
+      }
+    }
+
     const activeView = document.getElementById(`view-${viewName}`);
     if (activeView) {
       activeView.classList.add("active");
@@ -300,8 +323,6 @@ class AutoKraftPlatform {
     // Handle page-specific initializations
     if (viewName === "portal") {
       this.renderPortal();
-    } else if (viewName === "admin") {
-      this.renderAdmin();
     } else if (viewName === "book") {
       this.initBookingWizard();
     }
@@ -410,6 +431,39 @@ class AutoKraftPlatform {
     } else {
       alert("Invalid email or password combination. Try using ahmed@example.com / password");
     }
+  }
+
+  checkAdminSession() {
+    return localStorage.getItem("autokraft_logged_admin") === "true";
+  }
+
+  handleAdminLogin(e) {
+    e.preventDefault();
+    const email = document.getElementById("admin-email").value.trim();
+    const pass = document.getElementById("admin-password").value;
+
+    const adminEmail = "admin@autokraft.com";
+    const adminPass = "admin";
+
+    if (email.toLowerCase() === adminEmail && pass === adminPass) {
+      localStorage.setItem("autokraft_logged_admin", "true");
+      
+      document.getElementById("admin-login-box").style.display = "none";
+      document.getElementById("admin-main-layout").style.display = "grid";
+      
+      this.renderAdmin();
+      this.logWhatsAppNotification("System", "🛡️ Admin logged in: Secure access granted to Admin Console.");
+    } else {
+      alert("Invalid Admin credentials. Try using admin@autokraft.com / admin");
+    }
+  }
+
+  logoutAdmin() {
+    localStorage.removeItem("autokraft_logged_admin");
+    document.getElementById("admin-login-box").style.display = "flex";
+    document.getElementById("admin-main-layout").style.display = "none";
+    this.navigate("home");
+    this.logWhatsAppNotification("System", "🛡️ Admin logged out: Console connection closed.");
   }
 
   handleRegister(e) {
@@ -1843,4 +1897,4 @@ class AutoKraftPlatform {
 }
 
 // Instantiate global app instance
-const app = new AutoKraftPlatform();
+window.app = new AutoKraftPlatform();

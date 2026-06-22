@@ -932,7 +932,31 @@
            ADMIN PANEL VIEW
            ============================================== -->
       <div id="view-admin" class="view-pane">
-        <section class="admin-layout">
+        <!-- ADMIN LOGIN PANEL -->
+        <div id="admin-login-box" class="auth-section" style="display: flex; padding: 4rem 2rem;">
+          <div class="auth-card glass-card">
+            <div class="auth-header">
+              <h2 class="auth-title" style="color: var(--m-red); font-family: var(--font-mono);"><i class="fa-solid fa-shield-halved"></i> ADMIN PORTAL</h2>
+              <p class="auth-subtitle">Authorized AUTOKRAFT administrators only</p>
+            </div>
+            <form class="auth-form" onsubmit="app.handleAdminLogin(event)">
+              <div class="form-group">
+                <label for="admin-email">Admin Email</label>
+                <input type="email" id="admin-email" class="form-input" required placeholder="admin@autokraft.com">
+              </div>
+              <div class="form-group">
+                <label for="admin-password">Secure Password</label>
+                <input type="password" id="admin-password" class="form-input" required placeholder="••••••••">
+              </div>
+              <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">
+                VERIFY & ACCESS CONSOLE <i class="fa-solid fa-key"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- MAIN ADMIN DASHBOARD -->
+        <section id="admin-main-layout" class="admin-layout" style="display: none; padding: 8rem 2rem 4rem 2rem;">
           
           <!-- Admin Sidebar -->
           <div class="admin-sidebar">
@@ -965,6 +989,9 @@
               </li>
               <li class="admin-menu-item" id="am-vinlookup" onclick="app.switchAdminPane('vinlookup')">
                 <i class="fa-solid fa-magnifying-glass-chart"></i> VIN Lookup
+              </li>
+              <li class="admin-menu-item" onclick="app.logoutAdmin()" style="color:var(--status-critical); margin-top:2rem;">
+                <i class="fa-solid fa-power-off"></i> Log Out Admin
               </li>
             </ul>
           </div>
@@ -1202,7 +1229,54 @@
             <div class="admin-pane" id="admin-pane-inventory">
               <div class="admin-pane-header">
                 <h3 class="admin-pane-title">Parts Stock Control</h3>
+                <button class="btn btn-primary" onclick="app.showAddPartForm()">
+                  <i class="fa-solid fa-plus"></i> Add Part
+                </button>
               </div>
+
+              <!-- Add Part Form -->
+              <div id="inv-creation-box" class="glass-card" style="display:none; margin-bottom: 2rem;">
+                <h4 style="font-family:var(--font-mono); padding:1.5rem 1.5rem 0 1.5rem; color:var(--m-red);">ADD NEW INVENTORY ITEM</h4>
+                <form class="admin-form-box" onsubmit="app.handleAddPart(event)">
+                  <div class="form-group">
+                    <label for="inv-code">Part Code</label>
+                    <input type="text" id="inv-code" class="form-input" required placeholder="E.g. BMW-EOP-10">
+                  </div>
+                  <div class="form-group">
+                    <label for="inv-name">Part Name</label>
+                    <input type="text" id="inv-name" class="form-input" required placeholder="E.g. Spark Plug Type B">
+                  </div>
+                  <div class="form-group">
+                    <label for="inv-category">Category</label>
+                    <select id="inv-category" class="form-input" required>
+                      <option value="Filters">Filters</option>
+                      <option value="Fluids">Fluids</option>
+                      <option value="Braking">Braking</option>
+                      <option value="Ignition">Ignition</option>
+                      <option value="Suspension">Suspension</option>
+                      <option value="Electrical">Electrical</option>
+                      <option value="Engine Parts">Engine Parts</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="inv-compat">Compatibility</label>
+                    <input type="text" id="inv-compat" class="form-input" required placeholder="E.g. BMW F80 / Porsche 992">
+                  </div>
+                  <div class="form-group">
+                    <label for="inv-stock">Initial Stock</label>
+                    <input type="number" id="inv-stock" class="form-input" required min="0" placeholder="E.g. 20">
+                  </div>
+                  <div class="form-group">
+                    <label for="inv-thresh">Alert Threshold</label>
+                    <input type="number" id="inv-thresh" class="form-input" required min="1" placeholder="E.g. 5">
+                  </div>
+                  <div class="action-row form-group-full" style="justify-content:flex-end; margin-top: 1rem;">
+                    <button type="button" class="btn btn-outline" onclick="app.hideAddPartForm()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Part <i class="fa-solid fa-save"></i></button>
+                  </div>
+                </form>
+              </div>
+
               <div class="admin-table-container">
                 <table class="admin-table">
                   <thead>
@@ -1213,6 +1287,7 @@
                       <th>Compatible Brands</th>
                       <th>Current Stock</th>
                       <th>Threshold Alert</th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody id="admin-inventory-table">
@@ -1226,7 +1301,46 @@
             <div class="admin-pane" id="admin-pane-technicians">
               <div class="admin-pane-header">
                 <h3 class="admin-pane-title">Technicians Roster</h3>
+                <button class="btn btn-primary" onclick="app.showAddTechForm()">
+                  <i class="fa-solid fa-user-plus"></i> Add Technician
+                </button>
               </div>
+
+              <!-- Add Tech Form -->
+              <div id="tech-creation-box" class="glass-card" style="display:none; margin-bottom: 2rem;">
+                <h4 style="font-family:var(--font-mono); padding:1.5rem 1.5rem 0 1.5rem; color:var(--m-red);">ADD NEW TECHNICIAN</h4>
+                <form class="admin-form-box" onsubmit="app.handleAddTech(event)">
+                  <div class="form-group">
+                    <label for="tech-name">Full Name</label>
+                    <input type="text" id="tech-name" class="form-input" required placeholder="E.g. Hazem Emad">
+                  </div>
+                  <div class="form-group">
+                    <label for="tech-spec">Specialty / Certifications</label>
+                    <input type="text" id="tech-spec" class="form-input" required placeholder="E.g. Porsche PDK Certified Master">
+                  </div>
+                  <div class="form-group">
+                    <label for="tech-branch">Allocated Branch</label>
+                    <select id="tech-branch" class="form-input" required>
+                      <option value="El-Lebini">El-Lebini Branch</option>
+                      <option value="Sheikh Zayed">Sheikh Zayed Branch</option>
+                      <option value="Full Up Ring Road">Full Up Ring Road</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="tech-status">Status</label>
+                    <select id="tech-status" class="form-input" required>
+                      <option value="Active">Active</option>
+                      <option value="On Leave">On Leave</option>
+                      <option value="Suspended">Suspended</option>
+                    </select>
+                  </div>
+                  <div class="action-row form-group-full" style="justify-content:flex-end; margin-top: 1rem;">
+                    <button type="button" class="btn btn-outline" onclick="app.hideAddTechForm()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Technician <i class="fa-solid fa-save"></i></button>
+                  </div>
+                </form>
+              </div>
+
               <div class="admin-table-container">
                 <table class="admin-table">
                   <thead>
@@ -1236,6 +1350,7 @@
                       <th>Branch Allocation</th>
                       <th>Current Load</th>
                       <th>Status</th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody id="admin-technicians-table">
